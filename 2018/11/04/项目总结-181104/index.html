@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-HK">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-zhi.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-zhi.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-zhi.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="过去的10月，比以往都忙，因为领导给我负责的项目定了个第四季度KPI。考核指标是把日均订单量提高到给定的值。第四季度过去三分之一，在过去的一个月里，订单量增加了50%。虽然离指标还有一定距离，但增长的节奏很不错，故对接下来两个月能顺利完成指标有一定的信心。本文将总结10月份产品不断打磨的关键节点，并汇总一些有趣的思考和经验。">
+<meta name="keywords" content="产品经理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="项目总结_181104">
+<meta property="og:url" content="http://Chenzhipengo.github.io/2018/11/04/项目总结-181104/index.html">
+<meta property="og:site_name" content="chenzhipeng&#39;s blog">
+<meta property="og:description" content="过去的10月，比以往都忙，因为领导给我负责的项目定了个第四季度KPI。考核指标是把日均订单量提高到给定的值。第四季度过去三分之一，在过去的一个月里，订单量增加了50%。虽然离指标还有一定距离，但增长的节奏很不错，故对接下来两个月能顺利完成指标有一定的信心。本文将总结10月份产品不断打磨的关键节点，并汇总一些有趣的思考和经验。">
+<meta property="og:locale" content="zh-HK">
+<meta property="og:image" content="https://raw.githubusercontent.com/Chenzhipengo/images-for-github.io/master/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93_181104/0.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Chenzhipengo/images-for-github.io/master/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93_181104/2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Chenzhipengo/images-for-github.io/master/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93_181104/3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Chenzhipengo/images-for-github.io/master/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93_181104/4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Chenzhipengo/images-for-github.io/master/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93_181104/5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Chenzhipengo/images-for-github.io/master/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93_181104/1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Chenzhipengo/images-for-github.io/master/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93_181104/6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Chenzhipengo/images-for-github.io/master/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93_181104/7.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Chenzhipengo/images-for-github.io/master/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93_181104/8.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Chenzhipengo/images-for-github.io/master/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93_181104/9.png">
+<meta property="og:updated_time" content="2018-11-04T14:41:25.165Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="项目总结_181104">
+<meta name="twitter:description" content="过去的10月，比以往都忙，因为领导给我负责的项目定了个第四季度KPI。考核指标是把日均订单量提高到给定的值。第四季度过去三分之一，在过去的一个月里，订单量增加了50%。虽然离指标还有一定距离，但增长的节奏很不错，故对接下来两个月能顺利完成指标有一定的信心。本文将总结10月份产品不断打磨的关键节点，并汇总一些有趣的思考和经验。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Chenzhipengo/images-for-github.io/master/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93_181104/0.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://Chenzhipengo.github.io/2018/11/04/项目总结-181104/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>项目总结_181104 | chenzhipeng's blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-HK">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">chenzhipeng's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">在心為志 出口成言</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切換導航欄">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首頁</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分類</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />標籤</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />歸檔</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+  
+    
+      
+    
+    <a href="https://github.com/Chenzhipengo" class="github-corner" target="_blank" title="Follow me on GitHub" aria-label="Follow me on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg>
+    
+      </a>
+    
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Chenzhipengo.github.io/2018/11/04/项目总结-181104/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhipeng Chen">
+      <meta itemprop="description" content="reading,writing,basketball,movie">
+      <meta itemprop="image" content="/images/Bruce Lee.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="chenzhipeng's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">项目总结_181104
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+
+              
+                
+              
+
+              <time title="創建時間：2018-11-04 22:39:42 / 修改時間：22:41:25" itemprop="dateCreated datePublished" datetime="2018-11-04T22:39:42+08:00">2018-11-04</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/互联网/" itemprop="url" rel="index"><span itemprop="name">互联网</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                <span title="本文字數">4.1k</span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>过去的10月，比以往都忙，因为领导给我负责的项目定了个第四季度KPI。考核指标是把日均订单量提高到给定的值。第四季度过去三分之一，在过去的一个月里，订单量增加了50%。虽然离指标还有一定距离，但增长的节奏很不错，故对接下来两个月能顺利完成指标有一定的信心。本文将总结10月份产品不断打磨的关键节点，并汇总一些有趣的思考和经验。<br><a id="more"></a></p>
+<h2 id="拆解指标"><a href="#拆解指标" class="headerlink" title="拆解指标"></a>拆解指标</h2><p>KPI是一个抽象的目标，要完成目标，第一步就需要对指标进行拆解。我的指标是订单量，简单拆解就是，<strong>订单量=流量×转化率，流量=内部引流+外部引流，转化率＝入口转化率×订单提交页转化率。</strong>流量部分由于增长比较有限，而且主要是流量部门负责，因此下文叙述的是订单量的增加主要由于转化率的大幅提升。</p>
+<p>根据转化率＝入口转化率×订单提交页转化率，要提高转化率，目标就是同时提高入口转化率和订单提交页转化率。由于转化率是一个比率指标，进一步拆解可以得出，<strong>入口转化率=入口按钮点击用户数/入口所在页面的用户数，订单提交页转化率=提交订单的用户数/订单页面用户数。</strong></p>
+<p>假设平台的流量的稳定的，即用户数是相同的情况下（公式分母不变）。根据以上拆解公式，便可得到产品的优化方向，</p>
+<blockquote>
+<p>一是增加/优化订单提交入口，目的是增加一个单位内的“入口按钮点击用户数”；<br>二是优化订单提交页面，目的是增加一个单位内的“提交订单的用户数”。</p>
+</blockquote>
+<h2 id="增加-优化订单提交入口"><a href="#增加-优化订单提交入口" class="headerlink" title="增加/优化订单提交入口"></a>增加/优化订单提交入口</h2><p>正常的订单提交入口如下图所示，有两种形式，一种是常规的入口“获取底价”，另一种是支付宝询价。其中支付宝询价是今年与支付宝达成战略合作后推出的一种新询价方式，对比常规询价有两点优势：</p>
+<blockquote>
+<ol>
+<li>支付宝询价时用户不需要填写资料，我们通过支付宝授权就可以拿到用户的姓名和手机号码，在业务上这减少了无效手机号的数量。</li>
+<li>其次提交转化率更高，由于便捷，一键点击即可询价成功，用户体验更好；</li>
+</ol>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/Chenzhipengo/images-for-github.io/master/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93_181104/0.png" alt="此处输入图片的描述"></p>
+<p>针对支付宝的优势，我作出了第一个优化调整：将支付宝询价放在现在“获取底价”的位置，目的是提高用户点击数。放在更焦点的位置，支付宝询价按钮果然增加一倍的点击数，但是最终的订单数比原本的常规询价要少。通过分析，用户在提交订单过程流失的应该有两点：一是支付宝给用户第一印象是与金钱有关，会使得用户很敏感而不愿意点击打开；二是相比于一些不太主要的位置，位于焦点区的按钮用户感知很强烈，一直习惯常规询价，突然换成支付宝询价，自然产生一种警惕，从而不会打开。</p>
+<p><img src="https://raw.githubusercontent.com/Chenzhipengo/images-for-github.io/master/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93_181104/2.png" alt="此处输入图片的描述"></p>
+<p>为了解决订单数比之前少的问题，我的思考方向是，既然支付宝询价有转化率的优势，但用户对常规询价有依赖，那么试着将两者结合在一起成为“复合入口”会怎样？于是进行了第二步调整：两种形式合并在一个入口。最终效果是当用户点击取消打开支付宝的时候，页面自动跳转在常规询价的提交页面。不出意料订单量比之前单一的形式都要高。顺着这个突破，我在其余的支付宝询价入口都加上这种复合的形式。整体订单量的提升也很可观。</p>
+<p>通过数据的分析，我发现还是有一部分用户流失了，那会不会是给的提示还不够明显，导致用户在操作过程有疑惑呢？于是我在复合入口流程上，加了一个dialog对话框提示，如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/Chenzhipengo/images-for-github.io/master/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93_181104/3.png" alt="此处输入图片的描述"></p>
+<p>经过两次文案调整，发现对整体的提交不仅没提升，反而稍有降低。其中原因可能是弹框形式会对产品使用的流畅性造成影响；其次文字多了就会让用户思考，这违反了“don’t make me think”的原则。所以最后还是把弹框去掉。</p>
+<p>“复合入口”算是一次成功的尝试，原本按照计划，这需要铺开到其他重点的位置，用以替换常规入口。但是后来对订单提交页进行了一次大改版（后面会说到），综合整体的订单量考虑，就恢复到正常的入口。<strong>这里有个经验是，在做增长的时候，时刻关注的必然是整体的最优解，而不能局限于局部的最优解。</strong></p>
+<p>既然产品逻辑上的“复合入口”走不通，那对于入口优化，还有运营的形式。平台不定时都会有些运营活动，例如红包奖励之类 。于是很自然地想到产品和运营结合，在按钮上加上了“奖”字样式作为噱头，果然，入口点击数量增长20%。</p>
+<p><img src="https://raw.githubusercontent.com/Chenzhipengo/images-for-github.io/master/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93_181104/4.png" alt="此处输入图片的描述"></p>
+<p>经过以上几个入口优化方案，发现已经达到一定的瓶颈。再在现有的入口上进行优化，对订单量的提升空间已经不大。于是增长方向转到增加入口上。目标是增加入口按钮的点击数，增加入口的数量就意味着需要增加商品的展现量，那么增加什么样的商品会使用户更愿意点击呢？答案很明显，用过淘宝的都知道，在购买一件商品的时候，该商品下方都会出现一个叫“猜你喜欢”的模块，这种推荐形式成为了淘宝增长的关键点。不仅仅淘宝，现在很多平台，例如今日头条、爱奇艺优酷等，都使用推荐算法获得了很好的增长。究其原因，用户对自己感兴趣的东西是无法抗拒的。</p>
+<p>于是和数据中心的同事还有开发同事，一起做了一个很关键的优化方案：在核心页面增加“猜你喜欢”模块。如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/Chenzhipengo/images-for-github.io/master/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93_181104/5.png" alt="此处输入图片的描述"></p>
+<p>最终的效果也非常明显，但通过数据分析，我发现一个可以优化的点。在推荐模块中，点击车系图片的数量是点击获取底价按钮数量的20倍，根据用户场景很容易知道原因。用户点击图片更想了解一下这款车，而不是立即询价。但是为了数据增长，我把点击图片跳转连到了订单提交页。订单量当然进一步增长，但是牺牲了一部分用户体验。</p>
+<p>政治正确的话是：优化用户体验能增加用户粘性，提高转化率。然而，实际上，破坏一些用户体验可能也会提高转化率。关于KPI和用户体验，理想状态是用户体验服务于KPI。但是很多情况下，用户体验是一回事，KPI是另外一回事。当然，为了KPI牺牲用户体验也并不是一件很光彩的事情，但是在某些情况下，会成为不得不做的一件事。</p>
+<p>牺牲用户体验并不光彩，但是即便是大厂也为了kpi不断在牺牲，这都是可以理解，毕竟企业需要利润。比如说，360在每年的双11都会打天猫淘宝的广告，而且是在PC端强制弹出还过滤不掉，360杀毒就有功能是过滤弹窗的。但过滤不了自己的广告。所以，有些时候，在KPI面前，用户体验有些无力。完成KPI的前提下，才有更多机会拿到改善用户体验的话语权。用户体验并不是是一件很玄的事情，但是它的确需要时间来打磨，并且在特殊的情况下，需要为业务作出一定让步。</p>
+<p><img src="https://raw.githubusercontent.com/Chenzhipengo/images-for-github.io/master/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93_181104/1.png" alt="此处输入图片的描述"></p>
+<h2 id="优化订单提交页面"><a href="#优化订单提交页面" class="headerlink" title="优化订单提交页面"></a>优化订单提交页面</h2><p>产品核心页面有限，对订单提交入口的增加或优化也有一定的界限。经过以上几点的处理，基本优化空间不大。重点便转向了订单提交页面，目标是提高提交订单的用户数。思考的逻辑也很简单，在平台流量稳定的情况下，用户点击数会达到一个临界点，这时候再去做入口点击增长不太现实。但是只要提交页面的转化率提高一点，整体订单量的提升也会很可观。因此，订单提交页进行了一次大改版：</p>
+<p><img src="https://raw.githubusercontent.com/Chenzhipengo/images-for-github.io/master/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93_181104/6.png" alt="此处输入图片的描述"></p>
+<p>从新梳理了用户场景，以价格对照以及口碑这两个点来刺激用户下单。根据行为心理学的前景理论，人们经常违背简单的经济原则去做决策，他们每一次的判断过程与决策结果并不是完全理性和最优的。前景理论的核心理念之一，就是人们并非绝对按照经济原则去评价事物，而是根据比较原则或者“参照点”来评价事物。因此在改版中我设置了两个参照点，一个是价格对照，另一个是该车系的3个优点。通过问号显示优惠的价格，对照了参照点官方价；通过优点，对照了用户心中无感的参照点。</p>
+<p>改版上线后，效果不错，但是仍然可以进一步优化。通过对业务的了解，发现很多地区都不一定有优惠价格，这会造成价格上没有对比，因此我决定做一个调整。既然有很多地区没有优惠价格，但是同一款车系在全国会有一个最低价，因此就把这个最低价作为一个噱头，使得价格对照更加明显。当然这样处理会有一定的问题，因为经销商不一定都能开出这么低的价格。于是进一步对不同经销商场景下，使用了不同的方案。</p>
+<p>此外，通过数据分析，发现用户在留资的时候，第一步填写了手机号后，第二步有30%的用户没有填写姓名流失掉了。这是很可惜的，手机号都填了，至于姓名称呼是次要的，于是和业务部门的同事商量后决定当用户填了手机号后，第二步不填姓名，关闭弹窗也是默认提交订单成功。这个处理方案会损害用户体验，其次是对订单的质量有影响。但是经过业务部门的用户回访，发现这些订单质量也还不错，最终解决方案保持下来。订单量由此提高20%。</p>
+<p><img src="https://raw.githubusercontent.com/Chenzhipengo/images-for-github.io/master/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93_181104/7.png" alt="此处输入图片的描述"></p>
+<h2 id="关注数据，关注异常"><a href="#关注数据，关注异常" class="headerlink" title="关注数据，关注异常"></a>关注数据，关注异常</h2><p>数据在项目迭代过程中极为重要。我每天上班的第一件事就是打开数据统计后台查看数据。主要关注两个模块，一是日常的基础数据，例如页面的PV、UV等；而是埋点数据，通过埋点数据的分析，评估功能效果。</p>
+<h3 id="日常数据"><a href="#日常数据" class="headerlink" title="日常数据"></a>日常数据</h3><p>其实每天的数据变化不会特别大，所以我需要关注的就是那些异常值。比如某一天UV特别低或者特别高，就需要进行排查。订单量的统计，也是我关注的日常数据。这块数据，公司的数据后台把每个入口都单独统计了，这样只要某个入口的数据出现异常，我能及时发现问题出在哪儿。</p>
+<p><img src="https://raw.githubusercontent.com/Chenzhipengo/images-for-github.io/master/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93_181104/8.png" alt="此处输入图片的描述"></p>
+<h3 id="埋点数据"><a href="#埋点数据" class="headerlink" title="埋点数据"></a>埋点数据</h3><p>新增或者修改了什么东西，我都会在这个地方埋点，即添加一段统计代码，做下前后数据的统计分析。所以数据不好，会及时撤回或者修改。比如上面所说的用户留资料填手机后，再填姓名，我就统计点击第一个按钮、点击第二个按钮的次数。通过分析这些数据，测算这个转化率。最后发现转化率还比较可以，就保留这个方案，并不断的优化更新。</p>
+<p><img src="https://raw.githubusercontent.com/Chenzhipengo/images-for-github.io/master/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93_181104/9.png" alt="此处输入图片的描述"></p>
+<h2 id="经验总结"><a href="#经验总结" class="headerlink" title="经验总结"></a>经验总结</h2><h3 id="快速试错"><a href="#快速试错" class="headerlink" title="快速试错"></a>快速试错</h3><p>由于时间非常宝贵，开发资源也非常宝贵，一旦有了一个想法之后，会使用最简单的方式快速测试。所谓的最简方案是能不用设计师设计就不用设计，能不用程序员写代码就不写代码，先上看效果，效果好就优化，效果不好就立马下下来。比如上面说的“奖”字样式，就是前端加个class，不用出UI设计稿，方便我们快速验证。</p>
+<h3 id="一端先行，有效果后多端跟进"><a href="#一端先行，有效果后多端跟进" class="headerlink" title="一端先行，有效果后多端跟进"></a>一端先行，有效果后多端跟进</h3><p>由于项目涉及的是wap端/web端/ APP端，为了不浪费开发资源，新的想法都是在其中某一端实现后觉得效果比较好才在其他端开始实现。由于APP端依赖于发版和用户更新，所以每次都是想法极其成熟之后再在APP端实现。比如订单提交页改版，我先在wap端做的测试，随后在web上线和APP发版。其中有些模块或者代码会尽量做成可以复用，其他端跟进也会比较快速。</p>
+<h3 id="时间把控与迭代节奏"><a href="#时间把控与迭代节奏" class="headerlink" title="时间把控与迭代节奏"></a>时间把控与迭代节奏</h3><p>时间是非常宝贵的资源，项目需要建立一个个时间节点和里程碑，要有适当的取舍。迭代节奏也需要平稳，不能一会慢一会紧。做增长需要循序渐进，只有当一个个细节优化下去，才会发现越来越多的点，而不是想着一口吃个大西瓜。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/产品经理/" rel="tag"><i class="fa fa-tag"></i> 产品经理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/31/选择与风险/" rel="next" title="选择与风险">
+                <i class="fa fa-chevron-left"></i> 选择与风险
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/Bruce Lee.JPG"
+                alt="Zhipeng Chen" />
+            
+              <p class="site-author-name" itemprop="name">Zhipeng Chen</p>
+              <p class="site-description motion-element" itemprop="description">reading,writing,basketball,movie</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">文章</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分類</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">標籤</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Chenzhipengo" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:chenzhipeng729@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/Chenzhipengo" target="_blank" title="Twitter"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://instagram.com/chenzhipengo" target="_blank" title="Instagram"><i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#拆解指标"><span class="nav-number">1.</span> <span class="nav-text">拆解指标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增加-优化订单提交入口"><span class="nav-number">2.</span> <span class="nav-text">增加/优化订单提交入口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化订单提交页面"><span class="nav-number">3.</span> <span class="nav-text">优化订单提交页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关注数据，关注异常"><span class="nav-number">4.</span> <span class="nav-text">关注数据，关注异常</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#日常数据"><span class="nav-number">4.1.</span> <span class="nav-text">日常数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#埋点数据"><span class="nav-number">4.2.</span> <span class="nav-text">埋点数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#经验总结"><span class="nav-number">5.</span> <span class="nav-text">经验总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#快速试错"><span class="nav-number">5.1.</span> <span class="nav-text">快速试错</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一端先行，有效果后多端跟进"><span class="nav-number">5.2.</span> <span class="nav-text">一端先行，有效果后多端跟进</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间把控与迭代节奏"><span class="nav-number">5.3.</span> <span class="nav-text">时间把控与迭代节奏</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <!-- <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhipeng Chen</span>
+  <!-- &nbsp;
+  <div class="powered-by">|  
+  &nbsp;<i class="fa fa-user-md"></i><span id="busuanzi_container_site_pv">
+  <span id="busuanzi_value_site_pv"></span>
+  </span>
+  </div>
+  -->
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站點總字數">32k</span>
+  
+
+  
+</div>
+
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+</body>
+</html>
